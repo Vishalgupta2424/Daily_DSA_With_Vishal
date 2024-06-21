@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+        vector<pair<int,char>> hash('z'+1,{0,0});
+        
+        for(char it: s)
+            hash[it]={hash[it].first+1 , it};  //it-->pair
+
+        //Custom comparison function for sorting in descending order of frequency
+    sort(hash.begin(), hash.end(), [](pair<int, char>& a, pair<int, char>& b) {
+            return a.first > b.first;
+      });
+        
+    
+        
+        string res ="";
+        for(auto p: hash)
+            res+= string(p.first,p.second);
+        
+        return res;
+    }
+};
