@@ -1,0 +1,47 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        int result = 0;
+        int n=s.length();
+        
+        for (int i=0;i<n;++i) {
+            
+            int current = getValue(s[i]);
+            int next = getValue(s[i+1]);
+            
+            if(current < next) {
+                result -= current;
+            } 
+            
+            else {
+                result += current;
+            }
+            
+        }
+        
+        return result;
+    }
+
+private:
+    int getValue(char c) {
+        switch (c) {
+            case 'I': return 1;
+            case 'V': return 5;
+            case 'X': return 10;
+            case 'L': return 50;
+            case 'C': return 100;
+            case 'D': return 500;
+            case 'M': return 1000;
+            default: return 0;
+        }
+    }
+    
+    
+
+
+};
+
+
+//One alternative approach is to utilize the fact that Roman numerals are essentially additive, except for cases like "IV" (4), "IX" (9), "XL" (40), "XC" (90), "CD" (400), and "CM" (900), where a smaller value precedes a larger one, indicating subtraction.
+//Here's a brief explanation of an alternative approach:
+//Iterate through the Roman numeral string from left to right.Compare the current character with the next one.If the current character represents a smaller value than the next one, subtract its value from the total.Otherwise, add its value to the total.
