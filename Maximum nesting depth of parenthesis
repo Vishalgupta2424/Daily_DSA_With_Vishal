@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxDepth(string s) {
+        int openBrcktcnt=0;
+        int result=0;
+        
+        for(char ch:s) {
+            if(ch=='(') openBrcktcnt++;
+            else if(ch==')') openBrcktcnt--;
+            
+            result=max(result, openBrcktcnt);
+        }
+        
+        return result;
+        
+    }
+};
+
+//optimal approach
+//sc-O(1) 
